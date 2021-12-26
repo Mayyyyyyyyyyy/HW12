@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="styles2.css">
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<div class="center">
+			<h1 class="margin" >Guessing Game</h1>
+			<form >
+				<label class="margin">Your Guess(1~100)</label>
+				<input type="number" id="num" name="guess" class="margin">
+			</form>
+			<span ><input class="button"; type="button" value="play" name="play" onclick="guess()" style="width: 150px;height: 50px;"></span>
+			<table  id="table" class="tr">
+				<tr >
+					<th>Result</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var random=Math.floor((Math.random()*100)+1);
+		var min=1;
+		var max=100;
+
+		function guess(){
+			var input=parseInt(document.getElementById('num').value);
+
+			if(input==random){
+				alert("Bingooooo!!!");
+				location.reload();
+			}
+
+			while(input!=random){
+
+				if(input>random){
+					if(input<max){
+						max=input;
+					}
+				}
+
+				else if(input<random){
+					if(input>min){
+						min=input;
+					}
+				}
+
+				var tr=document.createElement("tr");
+				var td=document.createElement("td");
+				var text=document.createTextNode(min+"~"+max);
+				td.appendChild(text);				
+				tr.appendChild(td);
+				document.getElementById("table").appendChild(tr);
+				break;		
+
+			}
+		}
+	</script>
+</body>
+</html>
